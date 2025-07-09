@@ -9,15 +9,29 @@ Run [ipyrad](https://ipyrad.readthedocs.io/en/latest/) for RAD-seq data to get t
 
 # Dependencies
 python 3
-Biopython 1.79 or later
-GeneMiner
-MAFFT
-TtrimAl
-
-# installation
+Biopython 1.79 or later. via conda
+[MAFFT](https://mafft.cbrc.jp/alignment/software/) via [conda](https://anaconda.org/bioconda/mafft)
+[TtrimAl](https://trimal.readthedocs.io/en/latest/) via [conda](https://anaconda.org/bioconda/trimal).
 [argparse](https://pypi.org/project/argparse/). Easy installation from [conda](https://anaconda.org/conda-forge/argparse)
 
-[MAFFT](https://mafft.cbrc.jp/alignment/software/). Easy installation from [conda](https://anaconda.org/bioconda/mafft)
+```
+conda create --name radador python=3.7
+source activate radador
+conda install biopython=1.79
+conda install bioconda::mafft
+conda install bioconda::trimal
+conda install conda-forge::argparse
+
+```
+
+[GeneMiner](https://github.com/happywithxpl/GeneMiner).
+```
+wget -c https://github.com/happywithxpl/GeneMiner/releases/download/v1.0.0/GeneMiner_v1.0.0_linux.tar.gz
+tar GeneMiner_v1.0.1_linux.tar.gz
+cd GeneMiner_v1.0.1_linux
+chmod 755 geneminer.py
+
+```
 
 # Environment
 Examples can be run on Mac or Linux.
@@ -34,16 +48,21 @@ Examples can be run on Mac or Linux.
   vim radador_2.sh
 
   ```
-  Modify all parameters in User-defined paths
+  Modify all parameters below
   ```
-  input="/work/users/w/z/wzhou10/venus_flytrap/50_outfiles/50.loci"          # Your loci input from ipyrad
-  output="./output_dir"              # Output directory
-  split_flag="2"                     # paired-end is 2; single-end is 1
-  reads1="../../Aldrovanda_vesiculosa/trimmed-rename_12.fastq"    # QC-ed read file_R1
-  reads2="../../Aldrovanda_vesiculosa/trimmed-rename_22.fastq"    # QC-ed read file_R2
-  geneminer="/work/users/w/z/wzhou10/tools/GeneMiner/geneminer.py"    # Full path of your geneminer.py
-  sample_name="Al_ves"               # Change your outgroup name with less than 9 characters
-  threads=20                         # Threads of your CPUs
+# Required variables (you must define them before running this script):
+# - reads: folder with *.fastq files, end up with 1.fastq and 2.fastq
+# - sample_name_prefix: prefix for sample names
+# - output: main output directory path
+# - geneminer: path to GeneMiner script
+# - threads: number of threads to use
+
+reads="/work/users/w/z/wzhou10/venus_flytrap/genome/Aldrovanda_vesiculosa/"
+sample_name_prefix="outgroup"
+output="./results2/"
+geneminer="/work/users/w/z/wzhou10/tools/GeneMiner/geneminer.py"
+threads=4
+locifile="/work/users/w/z/wzhou10/venus_flytrap/50_outfiles/50.loci"
   ```
 
   Then run command
@@ -59,7 +78,7 @@ Examples can be run on Mac or Linux.
 * R1_fasta and R2_fasta
     splited fasta files for every locus
   
-* geneMiner_output_R1 and geneMiner_output_R2
+* all individual folder with geneMiner_output_R1 and geneMiner_output_R2
     geneMiner output for newly sequenced individual from Whole Genome Sequencing data (~10x)
   
 * split_genes_R1 and split_genes_R2
