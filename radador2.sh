@@ -8,6 +8,7 @@ set -euo pipefail
 # - output: main output directory path
 # - geneminer: path to GeneMiner script
 # - threads: number of threads to use
+# - locifile: loci file from ipyrad
 
 reads="/work/users/w/z/wzhou10/venus_flytrap/genome/Aldrovanda_vesiculosa/"
 sample_name_prefix="outgroup"
