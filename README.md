@@ -39,11 +39,10 @@ Examples can be run on Mac or Linux.
 
 ## Details and Usage
 
-  This script is used to recapture loci in RAD-seq outgroup from RNA-seq or Genome data. It requires .loci file from ipyrad, .phy file from ipyrad, .fasta file from RNA-seq (Trinity) or Genomic data. You also need to define one outgroup name and output partition file name. '-i', '-o', '-iph', '-itr', '-og' are required arguments. The default output file will be generated at current working dirctory.
-  
-  Make sure your working dirctory contain all the RADADOR python scripts. You can copy all files to RAD_Allele_Dropout_Remedy folder.
+  This script is used to capture shared RAD-seq loci from Whole Genome Sequencing data (~10x). It requires .loci file from ipyrad and WGS raw reads in a same folder. Don't forget to change the parameters in your radador_2.sh.
   
   ``` 
+  git clone https://github.com/Bean061/RAD_Allele_Dropout_Remedy2.git
   cd RAD_Allele_Dropout_Remedy2/
   vim radador_2.sh
 
