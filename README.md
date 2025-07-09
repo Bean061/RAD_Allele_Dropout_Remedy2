@@ -57,12 +57,12 @@ Examples can be run on Mac or Linux.
 # - geneminer: path to GeneMiner script
 # - threads: number of threads to use
 
-reads="/work/users/w/z/wzhou10/venus_flytrap/genome/Aldrovanda_vesiculosa/"
+reads="/FULL/PATH/OF/venus_flytrap/genome/Aldrovanda_vesiculosa/"
 sample_name_prefix="outgroup"
 output="./results2/"
-geneminer="/work/users/w/z/wzhou10/tools/GeneMiner/geneminer.py"
+geneminer="/FULL/PATH/OF/GeneMiner/geneminer.py"
 threads=4
-locifile="/work/users/w/z/wzhou10/venus_flytrap/50_outfiles/50.loci"
+locifile="/FULL/PATH/OF/LOCIFILE/50.loci"
   ```
 
   Then run command
